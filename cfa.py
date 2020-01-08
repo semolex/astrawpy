@@ -3,8 +3,6 @@ import numpy as np
 
 import echo
 
-DEFAULT_NUM_OF_PLANES = 3
-
 
 class CFA:
     """
@@ -28,12 +26,12 @@ class CFA:
 
         echo.info(f'Value to fill: {fill}')
         number_of_planes = self.raw.num_colors + 1
-        for i in range(number_of_planes):
+        for i in range(1, number_of_planes):
             echo.info(f'Extracting CFA plane #{i}')
             mask = (self.raw.raw_colors_visible != i)
             plane = np.copy(self.raw.raw_colors_visible)
             plane[mask] = fill
-            yield plane
+            yield i, plane
 
     def get_num_of_colors(self):
         return self.raw.num_colors

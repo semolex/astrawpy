@@ -47,7 +47,7 @@ def _colored_info(msg):
     Colored info output function.
     """
     msg = str(msg)
-    click.secho(msg, **COLOR_SCHEMA['error'])
+    click.secho(msg, **COLOR_SCHEMA['info'])
 
 
 ok = _colored_ok
